@@ -17,6 +17,8 @@ module Refinery
           format.html
           format.js { render :partial => "refinery/photo_gallery/albums/photos" }
         end
+
+		present(@page)
       end
     end
   end

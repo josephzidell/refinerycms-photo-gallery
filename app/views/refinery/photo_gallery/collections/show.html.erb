@@ -1,5 +1,9 @@
-<% content_for :body_content_right do %>
-    <%= message_albums_length_is_zero %>
+<% content_for :body_content_title do %>
+	<%= @collection.title %>
+<% end %>
+
+<% content_for :body do %>
+	<%= message_albums_length_is_zero %>
 
     <ul style="list-style-type: disc;">
       <% @albums_for_collection.each do |album|  %>
@@ -12,8 +16,4 @@
 
 <% end %>
 
-<% content_for :body_content_left do %>
-    <%= render :partial=> "refinery/photo_gallery/shared/submenu" %>
-<% end %>
-
-<%= render :partial=> "refinery/photo_gallery/shared/layout" %>
+<%= render '/refinery/content_page' %>

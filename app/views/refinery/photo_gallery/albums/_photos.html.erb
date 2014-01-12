@@ -1,23 +1,18 @@
 <% cache "refinery/photo_gallery/albums/#{params[:id]}/page_#{params[:page]}" do %>
     <%= will_paginate @photos %>
-    <div style="clear:both;"></div>
 
-
+	<ul id="photos" class="photo-list clearfix">
     <% @photos.each_with_index do |photo, index|  %>
-        <div class="column portfolio-item">
-          <div class="portfolio-thumbnail-image">
-
+        <li>
             <%= link_to (image_tag  photo.file.album.url, :width => Refinery::PhotoGallery.album_dimensions[0], :height => Refinery::PhotoGallery.album_dimensions[1] ), photo.file.single.url, {
                     :target=> "_blank",
                     :class=>"fancybox",
                     :data =>{:title=> photo_description(photo,@photos, index)},
                     :rel=>"group",
                     :title=> photo.title } %>
-          </div>
-        </div>
+        </li>
     <% end %>
+	</ul>
 
-
-    <div style="clear:both;"></div>
     <%= will_paginate @photos %>
 <% end %>
